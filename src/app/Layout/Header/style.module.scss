@@ -1,0 +1,24 @@
+.header {
+    width: 100%;
+    display: flex;
+
+    & > img {
+        justify-self: start;
+        width: 70px;
+        height: 70px;
+    }
+
+    .nav {
+        justify-self: center;
+
+        .list {
+            display: flex;
+            gap: 35px;
+
+            &Item {
+                color: #000;
+                font-size: 16px;
+            }
+        }
+    }
+}

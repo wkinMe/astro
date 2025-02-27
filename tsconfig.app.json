@@ -23,9 +23,10 @@
         "noUncheckedSideEffectImports": true,
         "paths": {
             "@app/*": ["./src/app/*"],
-            "@entities/*": ["./src/entities"],
-            "@pages/*": ["./src/pages"],
-            "@shared/*": ["./src/shared"]
+            "@entities/*": ["./src/entities/*"],
+            "@pages/*": ["./src/pages/*"],
+            "@shared/*": ["./src/shared/*"],
+            "@images/*": ["./public/images/*"]
         }
     },
     "include": ["src"]
