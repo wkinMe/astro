@@ -1,23 +1,60 @@
 .header {
+    margin-top: 30px;
     width: 100%;
+    max-height: 100px;
+    align-items: center;
     display: flex;
 
     & > img {
-        justify-self: start;
         width: 70px;
         height: 70px;
     }
 
     .nav {
-        justify-self: center;
+        display: flex;
+        flex-grow: 1;
+        justify-content: center;
 
         .list {
+            list-style-type: none;
             display: flex;
             gap: 35px;
 
             &Item {
-                color: #000;
-                font-size: 16px;
+                position: relative;
+
+                a {
+                    text-decoration: none;
+                    color: #000;
+                    font-size: 16px;
+                }
+
+                &::before,
+                &::after {
+                    content: '';
+                    position: absolute;
+                    bottom: -3px;
+                    border-radius: 15px;
+                    width: 0;
+                    height: 3px;
+                    background-color: #000;
+                    transition: 0.3s all ease;
+                }
+
+                &::before {
+                    left: 49%;
+                }
+
+                &::after {
+                    right: 50%;
+                }
+
+                &:hover {
+                    &::before,
+                    &::after {
+                        width: 50%;
+                    }
+                }
             }
         }
     }

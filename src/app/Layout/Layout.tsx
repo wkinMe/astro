@@ -2,12 +2,15 @@ import Footer from '@app/Layout/Footer/Footer';
 import Header from '@app/Layout/Header/Header';
 import { Outlet } from 'react-router-dom';
 import styles from './style.module.scss';
+import { Container } from '@shared/ui/Container/Container';
 
 export function Layout() {
     return (
         <div className={styles.layout}>
             <Header />
-            <Outlet />
+            <Container>
+                <Outlet />
+            </Container>
             <Footer />
         </div>
     );
