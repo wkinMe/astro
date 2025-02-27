@@ -8,7 +8,9 @@ export default function Header() {
     return (
         <Container>
             <header className={styles.header}>
-                <img src={logo} alt="Astro" />
+                <Link to={URLS.HOME}>
+                    <img src={logo} alt="Astro" />
+                </Link>
                 <nav className={styles.nav}>
                     <ul className={styles.list}>
                         <li className={styles.listItem}>
