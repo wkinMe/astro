@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import styles from './style.module.scss';
 import logo from '@images/logo.svg';
 import { URLS } from '@shared/config/urls';
-import { Container } from '@shared/ui/Container/Container';
+import { Container } from '@shared/ui/Container';
 
 export default function Header() {
     return (

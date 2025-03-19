@@ -1,0 +1,14 @@
+$rotate: 18deg;
+
+.rotatedGallery {
+    display: flex;
+    gap: 55px;
+
+    & li:first-child {
+        transform: rotate($rotate);
+    }
+
+    & li:last-child {
+        transform: rotate(-$rotate);
+    }
+}

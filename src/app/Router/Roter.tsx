@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Home from '@pages/home/ui/Home';
-import Apod from '@pages/apod/ui/Apod';
-import Epic from '@pages/epic/ui/Epic';
+import { Home } from '@pages/home/ui/Home';
+import Apod from '@pages/apod/ui';
+import Epic from '@pages/epic/ui';
 import Mars from '@pages/mars/ui/Mars';
 import { URLS } from '@shared/config/urls';
 import { Layout } from '@app/Layout';
