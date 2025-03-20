@@ -1,4 +1,4 @@
-import { api } from '@entities/apod/api';
+import { apod_api } from '@entities/apod/api';
 import { Apod } from '@entities/apod/model';
 import { create } from 'zustand';
 
@@ -18,7 +18,7 @@ export const useApod = create<APODState>((set) => ({
     getTodayApod: async () => {
         try {
             set(() => ({ isLoading: true }));
-            const apod = await api.getTodayApod();
+            const apod = await apod_api.getTodayApod();
             set(() => ({ apods: [apod] }));
         } catch (e) {
             set(() => ({ error: e.message ?? e }));
@@ -29,7 +29,7 @@ export const useApod = create<APODState>((set) => ({
     getWeekApods: async () => {
         try {
             set(() => ({ isLoading: true }));
-            const apods = await api.getWeekDatesApod();
+            const apods = await apod_api.getWeekDatesApod();
             if (apods.length) {
                 set(() => ({ apods }));
             } else {
@@ -44,7 +44,10 @@ export const useApod = create<APODState>((set) => ({
     getBetweenDatesApod: async (startDate: string, endDate: string) => {
         try {
             set(() => ({ isLoading: true }));
-            const apods = await api.getBetweenDatesApod(startDate, endDate);
+            const apods = await apod_api.getBetweenDatesApod(
+                startDate,
+                endDate,
+            );
             if (apods.length) {
                 set((state) => {
                     state.apods = apods;

@@ -1,7 +1,7 @@
 import { Section } from '@shared/ui/Section';
 import { URLS } from '@shared/config/urls';
-import { ListWithPreview } from '@shared/ui';
-import { ApodGallery } from '../../../../widgets/apodGallery';
+import { ListWithPreview, RotatedGallery } from '@shared/ui';
+import { ApodGallery } from '@entities/apod';
 
 export function Home() {
     const sections = [
@@ -45,7 +45,13 @@ export function Home() {
             <Section title={sections[1].title} link={sections[1].link}>
                 <ApodGallery />
             </Section>
-            <Section></Section>
+            <Section
+                title={sections[2].title}
+                subtitle={sections[2].subtitle}
+                link={sections[2].link}
+            >
+                {/* <RotatedGallery /> */}
+            </Section>
         </>
     );
 }

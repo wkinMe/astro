@@ -30,4 +30,4 @@ class API {
     }
 }
 
-export const api = new API();
+export const apod_api = new API();

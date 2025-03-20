@@ -16,7 +16,7 @@ const BACK_URLS = {
 export const API_URLS = new Proxy(BACK_URLS, {
     get(target, prop: string) {
         if (prop === 'base') {
-            return target[prop]; // Возвращаем только base
+            return target[prop];
         }
         if (prop in target) {
             return (
