@@ -16,9 +16,13 @@ export function Section({ title, subtitle, link, children }: SectionProps) {
             <Title>{title}</Title>
             <Subtitle>{subtitle}</Subtitle>
             {children}
-            <GoLink path={link.path} sideLink={link.sideLink}>
-                {link.children}
-            </GoLink>
+            {link.text && (
+                <GoLink
+                    path={link.path}
+                    sideLink={link.sideLink}
+                    text={link.text}
+                />
+            )}
         </Container>
     );
 }

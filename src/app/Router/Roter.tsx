@@ -20,7 +20,12 @@ export default function Router() {
                 <Route path="/" element={<Layout />}>
                     {routes.map((route) => {
                         return route.index ? (
-                            <Route index key={route.path} path={route.path} />
+                            <Route
+                                index
+                                key={route.path}
+                                path={route.path}
+                                element={<Home />}
+                            />
                         ) : (
                             <Route
                                 key={route.path}

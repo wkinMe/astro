@@ -1,5 +1,9 @@
 import styles from './style.module.scss';
 
-export function Title({ children }: { children: React.ReactNode }) {
+interface TitleProps {
+    children: React.ReactNode;
+}
+
+export function Title({ children }: TitleProps) {
     return <h1 className={styles.title}>{children}</h1>;
 }

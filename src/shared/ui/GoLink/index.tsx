@@ -5,10 +5,10 @@ import { clsx } from 'clsx';
 export interface GoLinkProps {
     path: string;
     sideLink: boolean;
-    children: React.ReactNode;
+    text: string;
 }
 
-export function GoLink({ path, sideLink, children }: GoLinkProps) {
+export function GoLink({ path, sideLink, text }: GoLinkProps) {
     const className = clsx({
         [styles.link]: true,
         [styles.sideLink]: sideLink,
@@ -16,7 +16,7 @@ export function GoLink({ path, sideLink, children }: GoLinkProps) {
 
     return (
         <Link to={path} className={className}>
-            {children}
+            {text + ' ->'}
         </Link>
     );
 }
