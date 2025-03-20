@@ -23,6 +23,15 @@ export function Home() {
                 text: 'Get best picutres of the week',
             },
         },
+        {
+            title: 'View of our home',
+            subtitle: 'Get images of EPIC camera',
+            link: {
+                path: URLS.EPIC,
+                sideLink: false,
+                text: 'Get today pictures',
+            },
+        },
     ];
     return (
         <>
@@ -36,6 +45,7 @@ export function Home() {
             <Section title={sections[1].title} link={sections[1].link}>
                 <ApodGallery />
             </Section>
+            <Section></Section>
         </>
     );
 }
