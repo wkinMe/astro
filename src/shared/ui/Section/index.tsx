@@ -6,17 +6,17 @@ import { GoLink, GoLinkProps } from '@shared/ui/GoLink';
 interface SectionProps {
     title: React.ReactNode;
     subtitle?: React.ReactNode;
-    link: GoLinkProps;
+    link?: GoLinkProps;
     children: React.ReactNode;
 }
 
 export function Section({ title, subtitle, link, children }: SectionProps) {
     return (
-        <Container>
+        <Container style={{ marginTop: '100px', marginBottom: '100px' }}>
             <Title>{title}</Title>
             <Subtitle>{subtitle}</Subtitle>
             {children}
-            {link.text && (
+            {link && (
                 <GoLink
                     path={link.path}
                     sideLink={link.sideLink}

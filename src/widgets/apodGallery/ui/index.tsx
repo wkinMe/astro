@@ -17,6 +17,7 @@ export function ApodGallery() {
             ) : (
                 <Gallery imgs={apods.map((i) => i.url)} />
             )}
+            {error}
         </>
     );
 }

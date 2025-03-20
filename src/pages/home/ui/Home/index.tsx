@@ -7,11 +7,6 @@ export function Home() {
     const sections = [
         {
             title: 'Explore space world',
-            link: {
-                path: URLS.APOD,
-                sideLink: true,
-                text: '',
-            },
             listTitle: 'Explore space by using Astro',
             listTexts: [
                 'Full HD Images',
@@ -22,16 +17,25 @@ export function Home() {
         },
         {
             title: 'Get fresh space pictures',
+            link: {
+                path: URLS.APOD,
+                sideLink: true,
+                text: 'Get best picutres of the week',
+            },
         },
     ];
     return (
-        <Section title={sections[0].title} link={sections[0].link!}>
-            <ListWithPreview
-                listTitle={sections[0].listTitle!}
-                listTexts={sections[0].listTexts!}
-                img={sections[0].img!}
-            />
-            <ApodGallery />
-        </Section>
+        <>
+            <Section title={sections[0].title} link={sections[0].link!}>
+                <ListWithPreview
+                    listTitle={sections[0].listTitle!}
+                    listTexts={sections[0].listTexts!}
+                    img={sections[0].img!}
+                />
+            </Section>
+            <Section title={sections[1].title} link={sections[1].link}>
+                <ApodGallery />
+            </Section>
+        </>
     );
 }
