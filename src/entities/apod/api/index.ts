@@ -29,7 +29,7 @@ class API {
         const todayString = dateYYYYMMDD(today);
         const weekAgoString = dateYYYYMMDD(weekAgo);
 
-        return this.getBetweenDatesApod(todayString, weekAgoString);
+        return this.getBetweenDatesApod(weekAgoString, todayString);
     }
 }
 

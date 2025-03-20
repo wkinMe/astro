@@ -1,6 +1,7 @@
 import { Section } from '@shared/ui/Section';
 import { URLS } from '@shared/config/urls';
 import { Gallery, ListWithPreview } from '@shared/ui';
+import { ApodGallery } from '../../../../widgets/apodGallery';
 
 export function Home() {
     const sections = [
@@ -21,7 +22,6 @@ export function Home() {
         },
         {
             title: 'Get fresh space pictures',
-            imgs: [''],
         },
     ];
     return (
@@ -31,7 +31,7 @@ export function Home() {
                 listTexts={sections[0].listTexts!}
                 img={sections[0].img!}
             />
-            <Gallery></Gallery>
+            <ApodGallery />
         </Section>
     );
 }

@@ -10,7 +10,7 @@ const BACK_URLS = {
     apod: 'planetary/apod',
     epic: 'EPIC/api',
     mars: 'mars-photos/api/v1/rovers/',
-    apiKey: 'DEMO',
+    apiKey: 'JfAGPZleMFyEICtpaJbY0aIhiUCWyXD7hDcGMTlv',
 };
 
 export const API_URLS = new Proxy(BACK_URLS, {

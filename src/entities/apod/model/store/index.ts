@@ -6,6 +6,8 @@ export interface APODState {
     apods: Apod[];
     error: string;
     getTodayApod: () => void;
+    getWeekDatesApod: () => void;
+    getBetweenDatesApod: (startDate: string, endDate: string) => void;
 }
 
 export const useApod = create<APODState>((set) => ({
@@ -19,7 +21,7 @@ export const useApod = create<APODState>((set) => ({
                 return state;
             });
         } catch (e) {
-            set((state) => (state.error = e.message));
+            set((state) => (state.error = e.message ?? e));
         }
     },
     getWeekDatesApod: async () => {
@@ -34,7 +36,7 @@ export const useApod = create<APODState>((set) => ({
                 throw new Error("In these days apod doesn't work");
             }
         } catch (e) {
-            set((state) => (state.error = e.message));
+            set((state) => (state.error = e.message ?? e));
         }
     },
     getBetweenDatesApod: async (startDate: string, endDate: string) => {
@@ -49,7 +51,7 @@ export const useApod = create<APODState>((set) => ({
                 throw new Error("In these day apod doesn't work");
             }
         } catch (e) {
-            set((state) => (state.error = e.message));
+            set((state) => (state.error = e.message ?? e));
         }
     },
 }));
