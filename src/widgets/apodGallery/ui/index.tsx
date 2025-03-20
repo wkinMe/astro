@@ -4,11 +4,19 @@ import { useEffect } from 'react';
 import { Gallery } from '@shared/ui';
 
 export function ApodGallery() {
-    const { apods, getWeekDatesApod } = useApod();
+    const { apods, getWeekApods, error, isLoading } = useApod();
 
     useEffect(() => {
-        getWeekDatesApod();
+        getWeekApods();
     }, []);
 
-    return <Gallery imgs={apods.map((i) => i.url)} />;
+    return (
+        <>
+            {isLoading ? (
+                <h1>...Loading</h1>
+            ) : (
+                <Gallery imgs={apods.map((i) => i.url)} />
+            )}
+        </>
+    );
 }

@@ -1,5 +1,6 @@
 import { Apod } from '@entities/apod/model';
-import { API_URLS, dateYYYYMMDD } from '@shared/config';
+import { API_URLS } from '@shared/config';
+import { getTodayAndWeekAgo } from '@shared/config/utils';
 
 class API {
     getTodayApod(): Promise<Apod> {
@@ -23,13 +24,9 @@ class API {
         });
     }
     getWeekDatesApod(): Promise<Apod[]> {
-        const today = new Date();
-        const weekAgo = new Date(today.getTime() - 7 * 24 * 60 * 60 * 1000);
+        const [today, weekAgo] = getTodayAndWeekAgo();
 
-        const todayString = dateYYYYMMDD(today);
-        const weekAgoString = dateYYYYMMDD(weekAgo);
-
-        return this.getBetweenDatesApod(weekAgoString, todayString);
+        return this.getBetweenDatesApod(weekAgo, today);
     }
 }
 

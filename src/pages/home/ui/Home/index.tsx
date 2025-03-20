@@ -1,6 +1,6 @@
 import { Section } from '@shared/ui/Section';
 import { URLS } from '@shared/config/urls';
-import { Gallery, ListWithPreview } from '@shared/ui';
+import { ListWithPreview } from '@shared/ui';
 import { ApodGallery } from '../../../../widgets/apodGallery';
 
 export function Home() {

@@ -6,41 +6,44 @@ export interface APODState {
     apods: Apod[];
     error: string;
     getTodayApod: () => void;
-    getWeekDatesApod: () => void;
+    getWeekApods: () => void;
     getBetweenDatesApod: (startDate: string, endDate: string) => void;
+    isLoading: boolean;
 }
 
 export const useApod = create<APODState>((set) => ({
     apods: [],
     error: '',
+    isLoading: false,
     getTodayApod: async () => {
         try {
-            const apods = await api.getTodayApod();
-            set((state) => {
-                state.apods = [apods];
-                return state;
-            });
+            set(() => ({ isLoading: true }));
+            const apod = await api.getTodayApod();
+            set(() => ({ apods: [apod] }));
         } catch (e) {
-            set((state) => (state.error = e.message ?? e));
+            set(() => ({ error: e.message ?? e }));
+        } finally {
+            set(() => ({ isLoading: false }));
         }
     },
-    getWeekDatesApod: async () => {
+    getWeekApods: async () => {
         try {
+            set(() => ({ isLoading: true }));
             const apods = await api.getWeekDatesApod();
             if (apods.length) {
-                set((state) => {
-                    state.apods = apods;
-                    return state;
-                });
+                set(() => ({ apods }));
             } else {
                 throw new Error("In these days apod doesn't work");
             }
         } catch (e) {
-            set((state) => (state.error = e.message ?? e));
+            set(() => ({ error: e.message ?? e }));
+        } finally {
+            set(() => ({ isLoading: false }));
         }
     },
     getBetweenDatesApod: async (startDate: string, endDate: string) => {
         try {
+            set(() => ({ isLoading: true }));
             const apods = await api.getBetweenDatesApod(startDate, endDate);
             if (apods.length) {
                 set((state) => {
@@ -52,6 +55,8 @@ export const useApod = create<APODState>((set) => ({
             }
         } catch (e) {
             set((state) => (state.error = e.message ?? e));
+        } finally {
+            set(() => ({ isLoading: false }));
         }
     },
 }));
