@@ -4,7 +4,7 @@ import { API_URLS, dateYYYYMMDD, fetchWithApiKey } from '@shared/config';
 class API {
     getPicturesOfDay(dateString: string): Promise<Epic[]> {
         return fetchWithApiKey(
-            `${API_URLS.epic}/natural/date/${dateString}`,
+            `${API_URLS.epic}/api/natural/date/${dateString}`,
         ).then((res) => {
             if (!res.ok) {
                 throw new Error('Failed to get today EPIC picture');

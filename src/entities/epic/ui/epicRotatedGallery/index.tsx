@@ -9,5 +9,5 @@ export function EpicRotatedGallery() {
         setTodayEpics();
     }, []);
 
-    return <RotatedGallery imgs={epicsImages.slice(0, 4)} />;
+    return <RotatedGallery imgs={epicsImages.slice(0, 3)} />;
 }

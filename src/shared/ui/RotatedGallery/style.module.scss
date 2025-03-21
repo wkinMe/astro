@@ -1,14 +1,28 @@
 $rotate: 18deg;
 
 .rotatedGallery {
-    display: flex;
-    gap: 55px;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(100px, 400px));
+    justify-content: center;
+    gap: 50px;
+    list-style-type: none;
+    margin-bottom: 120px;
+
+    img {
+        max-width: 100%;
+    }
+
+    & li {
+        position: relative;
+    }
 
     & li:first-child {
-        transform: rotate($rotate);
+        top: 65px;
+        transform: rotate(-$rotate);
     }
 
     & li:last-child {
-        transform: rotate(-$rotate);
+        top: 65px;
+        transform: rotate($rotate);
     }
 }

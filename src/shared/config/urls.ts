@@ -8,7 +8,7 @@ export const URLS = {
 export const BACK_URLS = {
     base: 'https://api.nasa.gov/',
     apod: 'planetary/apod',
-    epic: 'EPIC/api',
+    epic: 'EPIC',
     mars: 'mars-photos/api/v1/rovers/',
     apiKey: 'JfAGPZleMFyEICtpaJbY0aIhiUCWyXD7hDcGMTlv',
 };
