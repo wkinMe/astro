@@ -1,10 +1,10 @@
 import { Apod } from '@entities/apod/model';
 import { API_URLS } from '@shared/config';
-import { getTodayAndWeekAgo } from '@shared/config/utils';
+import { fetchWithApiKey, getTodayAndWeekAgo } from '@shared/config/utils';
 
 class API {
     getTodayApod(): Promise<Apod> {
-        return fetch(API_URLS.apod).then((res) => {
+        return fetchWithApiKey(API_URLS.apod).then((res) => {
             if (!res.ok) {
                 throw new Error('Failed to fetch today APOD');
             }
@@ -12,8 +12,8 @@ class API {
         });
     }
     getBetweenDatesApod(start: string, end: string): Promise<Apod[]> {
-        return fetch(
-            `${API_URLS.apod}&start_date=${start}&end_date=${end}`,
+        return fetchWithApiKey(
+            `${API_URLS.apod}?start_date=${start}&end_date=${end}`,
         ).then((res) => {
             if (!res.ok) {
                 throw new Error(

@@ -40,7 +40,7 @@ export const EpicSchema = z.object({
     lunar_j2000_position: J2000PositionSchema,
     sun_j2000_position: J2000PositionSchema,
     attitude_quaternions: AttitudeQuaternionsSchema,
-    date: z.coerce.date(),
+    date: z.string(),
     coords: CoordsSchema,
 });
 export type Epic = z.infer<typeof EpicSchema>;

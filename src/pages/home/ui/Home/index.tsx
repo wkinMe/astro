@@ -2,6 +2,7 @@ import { Section } from '@shared/ui/Section';
 import { URLS } from '@shared/config/urls';
 import { ListWithPreview, RotatedGallery } from '@shared/ui';
 import { ApodGallery } from '@entities/apod';
+import { EpicRotatedGallery } from '@entities/epic';
 
 export function Home() {
     const sections = [
@@ -50,7 +51,7 @@ export function Home() {
                 subtitle={sections[2].subtitle}
                 link={sections[2].link}
             >
-                {/* <RotatedGallery /> */}
+                <EpicRotatedGallery />
             </Section>
         </>
     );

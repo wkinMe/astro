@@ -1,3 +1,5 @@
+import { BACK_URLS } from '@shared/config';
+
 export const dateYYYYMMDD = (date: Date) => {
     const mm = date.getMonth();
     const dd = date.getDate();
@@ -16,4 +18,15 @@ export const getTodayAndWeekAgo = (): [string, string] => {
     const todayString = dateYYYYMMDD(today);
     const weekAgoString = dateYYYYMMDD(weekAgo);
     return [todayString, weekAgoString];
+};
+
+// Универсальная функция для выполнения запросов с автоматическим добавлением api_key
+export const fetchWithApiKey = (
+    url: string,
+    options: RequestInit = {},
+): Promise<Response> => {
+    const urlWithApiKey = new URL(url);
+    urlWithApiKey.searchParams.append('api_key', BACK_URLS.apiKey);
+
+    return fetch(urlWithApiKey.toString(), options);
 };

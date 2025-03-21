@@ -5,7 +5,7 @@ export const URLS = {
     MARS: 'mars',
 };
 
-const BACK_URLS = {
+export const BACK_URLS = {
     base: 'https://api.nasa.gov/',
     apod: 'planetary/apod',
     epic: 'EPIC/api',
@@ -19,12 +19,7 @@ export const API_URLS = new Proxy(BACK_URLS, {
             return target[prop];
         }
         if (prop in target) {
-            return (
-                target.base +
-                target[prop as keyof typeof BACK_URLS] +
-                '?api_key=' +
-                target.apiKey
-            );
+            return target.base + target[prop as keyof typeof BACK_URLS];
         }
         throw new Error(`Unknown property: ${prop}`);
     },
