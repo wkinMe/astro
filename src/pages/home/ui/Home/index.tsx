@@ -26,7 +26,11 @@ export function Home() {
         },
         {
             title: 'View of our home',
-            subtitle: 'Get images of EPIC camera',
+            subtitle: (
+                <span>
+                    Get images of <u>EPIC</u> camera
+                </span>
+            ),
             link: {
                 path: URLS.EPIC,
                 sideLink: false,
