@@ -1,8 +1,9 @@
 import { Section } from '@shared/ui/Section';
 import { URLS } from '@shared/config/urls';
-import { ListWithPreview, RotatedGallery } from '@shared/ui';
+import { ListWithPreview } from '@shared/ui';
 import { ApodGallery } from '@entities/apod';
 import { EpicRotatedGallery } from '@entities/epic';
+import { MarsGallery } from '@entities/mars/ui/marsGallery';
 
 export function Home() {
     const sections = [
@@ -37,6 +38,24 @@ export function Home() {
                 text: 'Get today pictures',
             },
         },
+        {
+            title: 'Mars pictures',
+            subtitle: (
+                <span>
+                    Get mars <u>landscape</u> images and photos from{' '}
+                    <u>rover</u> cameras
+                </span>
+            ),
+            link: {
+                path: URLS.MARS,
+                sideLink: false,
+                text: (
+                    <span>
+                        Explore mars <u>right now</u>!
+                    </span>
+                ),
+            },
+        },
     ];
     return (
         <>
@@ -56,6 +75,13 @@ export function Home() {
                 link={sections[2].link}
             >
                 <EpicRotatedGallery />
+            </Section>
+            <Section
+                title={sections[3].title}
+                subtitle={sections[3].subtitle}
+                link={sections[3].link}
+            >
+                <MarsGallery />
             </Section>
         </>
     );

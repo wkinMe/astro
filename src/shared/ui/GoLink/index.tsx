@@ -5,7 +5,7 @@ import { clsx } from 'clsx';
 export interface GoLinkProps {
     path: string;
     sideLink: boolean;
-    text: string;
+    text: string | React.ReactNode;
 }
 
 export function GoLink({ path, sideLink, text }: GoLinkProps) {
@@ -16,7 +16,13 @@ export function GoLink({ path, sideLink, text }: GoLinkProps) {
 
     return (
         <Link to={path} className={className}>
-            {text + ' ->'}
+            {typeof text === 'string' ? (
+                `${text} ->`
+            ) : (
+                <>
+                    {text} {' ->'}
+                </>
+            )}
         </Link>
     );
 }
