@@ -1,7 +1,12 @@
+@import '../../../shared/config/constants/constant.module.scss';
+
 .gallery {
     list-style-type: none;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 320px));
+    grid-template-columns: repeat(
+        auto-fit,
+        minmax($imgsMinWidth $imgsMaxWidth)
+    );
     justify-content: center;
     align-items: center;
     column-gap: 20px;

@@ -2,19 +2,20 @@ import { Gallery } from '@shared/ui/Gallery';
 import { useState } from 'react';
 
 import styles from './style.module.scss';
+import { GALLERY_ITEM_MIN_WIDTH } from '@shared/config';
 
 interface PaginatedGalleryProps {
     imgs: string[];
-    pageCount: number;
 }
 
 export function PaginatedGallery({ imgs }: PaginatedGalleryProps) {
     const [item, setItem] = useState(0);
 
     const handleClick = (next: boolean) => {
-        console.log(imgs.length, item);
+        console.log(imgs.length - item, item + 1);
+
         if (next) {
-            setItem((prev) => Math.min(imgs.length - prev, prev + 1));
+            setItem((prev) => Math.min(imgs.length - prev + 1, prev + 1));
         } else {
             setItem((prev) => Math.max(0, prev - 1));
         }
@@ -26,7 +27,9 @@ export function PaginatedGallery({ imgs }: PaginatedGalleryProps) {
             <Gallery
                 imgs={imgs}
                 galleryClass="paginated"
-                style={{ transform: `translateX(-${item * 280}px)` }}
+                style={{
+                    transform: `translateX(-${item * GALLERY_ITEM_MIN_WIDTH}px)`,
+                }}
             />
             <button onClick={() => handleClick(true)}>{'>'}</button>
         </div>
