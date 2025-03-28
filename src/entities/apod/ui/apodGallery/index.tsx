@@ -1,7 +1,7 @@
 import { useApod } from '@entities/apod/model';
 import { useEffect } from 'react';
 
-import { Gallery } from '@shared/ui';
+import { PaginatedGallery } from '@shared/ui/PaginatedGallery';
 
 export function ApodGallery() {
     const { apods, getWeekApods, error, isLoading } = useApod();
@@ -15,7 +15,7 @@ export function ApodGallery() {
             {isLoading ? (
                 <h1>...Loading</h1>
             ) : (
-                <Gallery imgs={apods.map((i) => i.url)} />
+                <PaginatedGallery imgs={apods.map((i) => i.url)} />
             )}
             {error}
         </>

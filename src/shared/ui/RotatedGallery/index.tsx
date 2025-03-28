@@ -1,19 +1,9 @@
-import styles from './style.module.scss';
+import { Gallery } from '@shared/ui/Gallery';
 
 interface RotatedGalleryProps {
     imgs: string[];
 }
 
 export function RotatedGallery({ imgs }: RotatedGalleryProps) {
-    return (
-        <ul className={styles.rotatedGallery}>
-            {imgs.map((i) => {
-                return (
-                    <li key={i}>
-                        <img src={i} alt="" />
-                    </li>
-                );
-            })}
-        </ul>
-    );
+    return <Gallery imgs={imgs} galleryClass="rotated"></Gallery>;
 }

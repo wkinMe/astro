@@ -1,0 +1,21 @@
+.paginatinonContainer {
+    display: flex;
+    overflow: hidden;
+    align-items: center;
+
+    & > button {
+        outline: none;
+        background-color: white;
+        border: none;
+        height: 40px;
+        width: 40px;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .paginatinonContainer {
+        button {
+            display: none;
+        }
+    }
+}
