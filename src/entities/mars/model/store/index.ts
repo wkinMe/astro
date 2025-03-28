@@ -49,7 +49,8 @@ export const useMars = create<MarsState & MarsActions>((set, get) => ({
     initializePhotos: async () => {
         const { rover } = get();
         const { photos } = await mars_api.getPhotosOfRover(rover, 1000);
+        const { photos: photos1 } = await mars_api.getPhotosOfRover(rover, 900);
 
-        set(() => ({ photos }));
+        set(() => ({ photos: [photos[0], photos1[0]] }));
     },
 }));

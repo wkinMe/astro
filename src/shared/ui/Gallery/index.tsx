@@ -2,12 +2,12 @@ import styles from './style.module.scss';
 
 interface GalleryProps {
     imgs: string[];
-    galleryClass: string;
+    galleryClass?: string;
     style?: React.CSSProperties;
 }
 
 export function Gallery({ imgs, galleryClass, style }: GalleryProps) {
-    const className = styles[galleryClass] ?? styles.gallery;
+    const className = (galleryClass && styles[galleryClass]) || styles.gallery;
     return (
         <div className={styles.galleryContainer}>
             <ul className={className} style={style}>

@@ -5,7 +5,7 @@
     display: grid;
     grid-template-columns: repeat(
         auto-fit,
-        minmax($imgsMinWidth $imgsMaxWidth)
+        minmax($imgsMinWidth, $imgsMaxWidth)
     );
     justify-content: center;
     align-items: center;
