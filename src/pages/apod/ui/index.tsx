@@ -1,3 +1,5 @@
+import { ApodCalendar } from '@shared/ui/Calendar';
+
 export default function Apod() {
-    return <h1>Apod</h1>;
+    return <ApodCalendar />;
 }
