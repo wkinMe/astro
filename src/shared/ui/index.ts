@@ -6,3 +6,4 @@ export { RotatedGallery } from './RotatedGallery';
 export { Section } from './Section';
 export { Subtitle } from './Subtitle';
 export { Title } from './Title';
+export { CalendarWrapper } from './Calendar';

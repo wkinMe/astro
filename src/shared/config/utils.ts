@@ -11,13 +11,19 @@ export const dateYYYYMMDD = (date: Date) => {
     ].join('-');
 };
 
-export const getTodayAndWeekAgo = (): [string, string] => {
+export const getTodayAndWeekAgo = (): [Date, Date] => {
     const today = new Date();
     const weekAgo = new Date(today.getTime() - 7 * 24 * 60 * 60 * 1000);
 
-    const todayString = dateYYYYMMDD(today);
-    const weekAgoString = dateYYYYMMDD(weekAgo);
-    return [todayString, weekAgoString];
+    return [weekAgo, today];
+};
+
+export const getWeekMS = () => {
+    return 7 * getDayMS();
+};
+
+export const getDayMS = () => {
+    return 24 * 60 * 60 * 1000;
 };
 
 // Универсальная функция для выполнения запросов с автоматическим добавлением api_key
