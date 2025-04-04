@@ -1,6 +1,6 @@
 import { Apod } from '@entities/apod/model';
 import { API_URLS } from '@shared/config';
-import { fetchWithApiKey, getTodayAndWeekAgo } from '@shared/config/utils';
+import { fetchWithApiKey, getTodayAndWeekAgo } from '@shared/lib/utils';
 
 class API {
     getTodayApod(): Promise<Apod> {

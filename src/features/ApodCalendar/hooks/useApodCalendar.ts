@@ -5,6 +5,7 @@ import {
     adjustEndDate,
     adjustStartDate,
 } from '../lib/datesUtils';
+import { useApod } from '@entities/apod';
 
 export function useApodCalendar() {
     const [weekAgo, today] = getTodayAndWeekAgo();

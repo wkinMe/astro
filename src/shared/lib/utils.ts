@@ -26,7 +26,6 @@ export const getDayMS = () => {
     return 24 * 60 * 60 * 1000;
 };
 
-// Универсальная функция для выполнения запросов с автоматическим добавлением api_key
 export const fetchWithApiKey = (
     url: string,
     options: RequestInit = {},
