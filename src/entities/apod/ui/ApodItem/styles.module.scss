@@ -1,12 +1,28 @@
 .apodItem {
-    position: relative;
-    display: grid;
-    grid-template-rows: auto auto 1fr;
-    grid-template-columns: auto 1fr;
+    display: flex;
+    gap: 50px;
 
-    img {
+    .imaginary {
         max-width: 520px;
-        grid-row: 1/4;
+
+        img {
+            max-width: inherit;
+        }
+
+        iframe {
+            min-width: 520px;
+            height: 100%;
+        }
+    }
+
+    .content {
+        display: flex;
+        flex-direction: column;
+
+        header {
+            display: flex;
+            justify-content: space-between;
+        }
     }
 
     .title {
@@ -14,9 +30,6 @@
     }
 
     .date {
-        position: absolute;
-        right: 0;
-        top: 0;
         font-size: 26px;
         font-weight: bold;
     }
@@ -28,7 +41,7 @@
     }
 
     .explanation {
-        font-weight: 16;
+        font-size: 16px;
         margin-top: 36px;
     }
 }
