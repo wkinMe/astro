@@ -16,7 +16,7 @@ export interface APODState {
     isLoading: boolean;
     getTodayApod: () => void;
     getWeekApods: () => void;
-    getBetweenDatesApod: (startDate: Date, endDate: Date) => void;
+    getBetweenDatesApod: () => void;
     setStartDate: (startDate: Date) => void;
     setEndDate: (endDate: Date) => void;
 }
@@ -85,6 +85,7 @@ export const useApod = create<APODState>((set, get) => ({
             }));
         }
         set(() => ({ startDate }));
+        get().getBetweenDatesApod();
     },
     setEndDate: (endDate: Date) => {
         const diff = calculateDateDifference(get().startDate, endDate);
@@ -92,5 +93,6 @@ export const useApod = create<APODState>((set, get) => ({
             set(() => ({ startDate: adjustStartDate(endDate) }));
         }
         set(() => ({ endDate }));
+        get().getBetweenDatesApod();
     },
 }));

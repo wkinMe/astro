@@ -2,7 +2,18 @@ import { Apod } from '@entities/apod/model';
 
 import styles from './styles.module.scss';
 
-export function ApodItem({ copyright, date, explanation, title, url }: Apod) {
+type ApodItemProps = Pick<
+    Apod,
+    'copyright' | 'date' | 'explanation' | 'title' | 'url'
+>;
+
+export function ApodItem({
+    copyright,
+    date,
+    explanation,
+    title,
+    url,
+}: ApodItemProps) {
     return (
         <div className={styles.apodItem}>
             <img src={url} />

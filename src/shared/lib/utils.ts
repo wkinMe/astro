@@ -6,7 +6,7 @@ export const dateYYYYMMDD = (date: Date) => {
 
     return [
         date.getFullYear(),
-        (mm > 9 ? '' : '0') + mm,
+        (mm > 9 ? '' : '0') + (mm + 1),
         (dd > 9 ? '' : '0') + dd,
     ].join('-');
 };
