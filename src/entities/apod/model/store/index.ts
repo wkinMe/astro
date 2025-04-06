@@ -1,18 +1,30 @@
 import { apod_api } from '@entities/apod/api';
 import { Apod } from '@entities/apod/model';
+import {
+    adjustEndDate,
+    adjustStartDate,
+    calculateDateDifference,
+} from '@features/ApodCalendar/lib/datesUtils';
+import { getTodayAndWeekAgo, getWeekMS } from '@shared/config';
 import { create } from 'zustand';
 
 export interface APODState {
     apods: Apod[];
     error: string;
+    startDate: Date;
+    endDate: Date;
+    isLoading: boolean;
     getTodayApod: () => void;
     getWeekApods: () => void;
-    getBetweenDatesApod: (startDate: string, endDate: string) => void;
-    isLoading: boolean;
+    getBetweenDatesApod: (startDate: Date, endDate: Date) => void;
+    setStartDate: (startDate: Date) => void;
+    setEndDate: (endDate: Date) => void;
 }
 
-export const useApod = create<APODState>((set) => ({
+export const useApod = create<APODState>((set, get) => ({
     apods: [],
+    startDate: getTodayAndWeekAgo()[0],
+    endDate: getTodayAndWeekAgo()[1],
     error: '',
     isLoading: false,
     getTodayApod: async () => {
@@ -41,12 +53,12 @@ export const useApod = create<APODState>((set) => ({
             set(() => ({ isLoading: false }));
         }
     },
-    getBetweenDatesApod: async (startDate: string, endDate: string) => {
+    getBetweenDatesApod: async () => {
         try {
             set(() => ({ isLoading: true }));
             const apods = await apod_api.getBetweenDatesApod(
-                startDate,
-                endDate,
+                get().startDate,
+                get().endDate,
             );
             if (apods.length) {
                 set((state) => {
@@ -61,5 +73,24 @@ export const useApod = create<APODState>((set) => ({
         } finally {
             set(() => ({ isLoading: false }));
         }
+    },
+    setStartDate: (startDate: Date) => {
+        const endDate = get().endDate;
+        const diff = calculateDateDifference(startDate, endDate);
+        if (diff > 7) {
+            set(() => ({ startDate, endDate: adjustEndDate(endDate, diff) }));
+        } else if (diff < 0) {
+            set(() => ({
+                endDate: new Date(startDate.getTime() + getWeekMS()),
+            }));
+        }
+        set(() => ({ startDate }));
+    },
+    setEndDate: (endDate: Date) => {
+        const diff = calculateDateDifference(get().startDate, endDate);
+        if (diff > 7 || diff < 0) {
+            set(() => ({ startDate: adjustStartDate(endDate) }));
+        }
+        set(() => ({ endDate }));
     },
 }));

@@ -1,7 +1,7 @@
 import { useApod } from '@entities/apod/model';
 import { useEffect } from 'react';
 
-import { PaginatedGallery } from '../../../../features/PaginatedGallery';
+import { PaginatedGallery } from '@features/PaginatedGallery';
 
 export function ApodGallery() {
     const { apods, getWeekApods, error, isLoading } = useApod();

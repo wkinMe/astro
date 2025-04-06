@@ -1,6 +1,10 @@
 import { Apod } from '@entities/apod/model';
 import { API_URLS } from '@shared/config';
-import { fetchWithApiKey, getTodayAndWeekAgo } from '@shared/lib/utils';
+import {
+    dateYYYYMMDD,
+    fetchWithApiKey,
+    getTodayAndWeekAgo,
+} from '@shared/lib/utils';
 
 class API {
     getTodayApod(): Promise<Apod> {
@@ -11,9 +15,12 @@ class API {
             return res.json();
         });
     }
-    getBetweenDatesApod(start: string, end: string): Promise<Apod[]> {
+    getBetweenDatesApod(startDate: Date, endDate: Date): Promise<Apod[]> {
+        const startDateString = dateYYYYMMDD(startDate);
+        const endDateString = dateYYYYMMDD(endDate);
+
         return fetchWithApiKey(
-            `${API_URLS.apod}?start_date=${start}&end_date=${end}`,
+            `${API_URLS.apod}?start_date=${startDateString}&end_date=${endDateString}`,
         ).then((res) => {
             if (!res.ok) {
                 throw new Error(
